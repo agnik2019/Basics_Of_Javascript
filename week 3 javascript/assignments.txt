@@ -1,0 +1,7 @@
+1   Validate the fields of a form using JavaScript.
+2   Guess a number based on user input.
+3   Program on image rollover using JavaScript.
+4    Display clock using JavaScript.
+5    Prompt, alert, array, looping in JavaScript.
+6    Calculator using JavaScript.
+7    Validate e-mail, phone no. using reg-ex in JavaScript.

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image RollOver</title>
+</head>
+<body>
+    <script>
+        function mouserollover(myimg){
+            myimg.src = "pic2.jpg"
+          }
+
+        function mouseout(myimg){
+            myimg.src = "pic1.jpg"
+        }
+
+        
+    </script>
+
+    <div >
+
+    <!--The rollover image displays here.-->
+    <img src="pic1.jpg" boarder="0px" width="650px" height="550px" 
+    onMouseOver="mouserollover(this)" 
+    onMouseOut="mouseout(this)" />
+    </div>
+    
+    
+</body>
+</html>
