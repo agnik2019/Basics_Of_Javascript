@@ -112,8 +112,10 @@ output:
 - You cannot access let/const through window object, they are in seperate scope and space. Same goes for this.
 
 ##  Closures
+- A closure is a function having access to the parent scope, even after the parent function has closed.
+- A closure is created when we define a function, not when a function is executed.
 - function bind together with it's lexical scope.
-- Example: when function are returned from another function, they remember the varibles they will use. See notes for more.
+- Example: when function are returned from another function, they remember the varibles they will use.
 - Disadvantage : Lot of memeory is consumed.
 
 - **Uses Of Closure**
