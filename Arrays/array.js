@@ -46,4 +46,11 @@ const sum1 = numbers.reduce(
 );
 console.log(sum1);
 
+// indexOf
+const ages = [3, 10, 18, 20];
 
+ages.findIndex(checkAge)   // Returns 3
+
+function checkAge(age) {
+  return age > 18;
+}
