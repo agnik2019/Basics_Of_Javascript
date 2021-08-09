@@ -15,6 +15,8 @@ In how many ways can you travel to the goal on a grid with dimensions m * n?
 
 Write a function gridTraveler(m, n) that calculates this.
 
+![](https://github.com/agnik2019/Basics_Of_Javascript/blob/main/dsa_javascript/dynamic_programming/pics/2grid.jpg)
+
 ### Bruteforce solution
 ```js
 const gridTraveler = (m,n) => {
@@ -97,4 +99,124 @@ const canSum = (targetSum, numbers, memo = {}) => {
     memo[targetSum] = false;
     return false;
 }
+```
+
+## Question 4
+
+Write a function howSum(targetSum, numbers) that takes in a targetSum and an array of numbers as arguments.
+
+The function should return an array containing any combination of elements that add up to exactly the targetSum. If there is no combination that adds up to the targetSum, then return null.
+
+If there are multiple combinations possible, you may return any single one.
+
+```js
+const howSum = (targetSum, numbers, memo = {}) => {
+    if(targetSum in memo) return memo[targetSum];
+    if(targetSum === 0) return [];
+    if(targetSum < 0) return null;
+    for(let num of numbers)
+    {
+        const remainder = targetSum - num;
+        const remainderRes = howSum(remainder, numbers);
+        if(remainderRes !== null){
+            memo[targetSum]= [...remainderRes, num];
+            return memo[targetSum];
+        }
+    }
+    memo[targetSum] = null;
+    return null;
+}
+
+
+```
+
+
+
+
+# Question 5
+
+Write a function bestSum(targetSum, numbers) that takes in a targetSum and an array of numbers as arguments.
+
+The function should return an array containing the shortest combination of numbers that add up to exactly the targetSum.
+
+If there is a tie for the shortest combination, you may return any one of the shortest.
+
+```js
+const bestSum = (target, numbers) => {
+    if(target === 0) return [];
+    if(target < 0) return null;
+    let shortest = null;
+    for(let num of numbers)
+    {
+        let remainder = target - num;
+        const remComb = bestSum(remainder, numbers);
+        if(remComb !== null){
+            const comb = [...remComb, num];
+            if(shortest === null || comb.length < shortest.length)
+            {
+                shortest = comb;
+            }
+        }
+    }
+    return shortest
+}
+
+```
+
+
+
+# Question 6
+
+Write a function canConstruct(target, wordBank) that accepts a target string and an array of strings.
+
+The function should return a boolean indicating whether or not the target can be constructed by concatenating elements of the wordBank array.
+
+You may reuse elements of wordBank as many times as needed.
+
+
+```js
+const canConstruct = (target, wordBank) => {
+    if(target === "") return true;
+    for(let word of wordBank){
+        if(target.indexOf(word) === 0){
+            const suffix = target.slice(word.length)
+            if(canConstruct(suffix, wordBank) === true){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+```
+
+
+
+# Question 7
+
+
+Write a function `countConstruct(target, wordBank)` that accepts a target string and an array of strings.
+
+The function should return the number of ways that the target can be constructed by concatenating elements of the wordBank array.
+
+You may reuse elements of wordBank as many times as needed.
+
+
+
+```js
+const countConstruct = (target, wordBank, memo = {}) => {
+    if(target in memo) return memo[target];
+    if(target === '') return 1;
+    let count = 0;
+    for( let word of wordBank){
+        if(target.indexOf(word) === 0)
+        {
+            const numWaysForRest = countConstruct(target.slice(word.length), wordBank, memo);
+            count += numWaysForRest;
+        }
+    }
+    memo[target] = count;
+    return count;
+}
+
+
 ```
